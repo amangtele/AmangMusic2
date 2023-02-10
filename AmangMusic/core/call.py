@@ -206,7 +206,6 @@ class Call(PyTgCalls):
             except ChatAdminRequired:
                 raise AssistantErr(_["call_1"])
             if get.status == "banned" or get.status == "kicked":
-                await app.unban_chat_member(chat_id, userbot.id)
                 raise AssistantErr(
                     _["call_2"].format(userbot.username, userbot.id)
                 )
@@ -214,7 +213,6 @@ class Call(PyTgCalls):
             chat = await app.get_chat(chat_id)
             if chat.username:
                 try:
-                    await app.unban_chat_member(chat_id, userbot.id)
                     await userbot.join_chat(chat.username)
                 except UserAlreadyParticipant:
                     pass
@@ -249,7 +247,6 @@ class Call(PyTgCalls):
                             "https://t.me/+", "https://t.me/joinchat/"
                         )
                     await asyncio.sleep(3)
-                    await app.unban_chat_member(chat_id, userbot.id)
                     await userbot.join_chat(invitelink)
                     await asyncio.sleep(4)
                     await m.edit(_["call_6"].format(userbot.name))
@@ -298,15 +295,15 @@ class Call(PyTgCalls):
                 )
             except Exception as e:
                 raise AssistantErr(
-                    "**No Active Voice Chat Found**\n\nPlease make sure group's voice chat is enabled. If already enabled, please end it and start fresh voice chat again and if the problem continues, try /restart"
+                    "**Obrolan Suara Aktif Tidak Ditemukan**\n\nPastikan obrolan suara grup diaktifkan. Jika sudah diaktifkan, harap akhiri dan mulai obrolan suara baru lagi dan jika masalah berlanjut, coba /restart"
                 )
         except AlreadyJoinedError:
             raise AssistantErr(
-                "**Assistant Already in Voice Chat**\n\nSystems have detected that assistant is already there in the voice chat, this issue generally comes when you play 2 queries together.\n\nIf assistant is not present in voice chat, please end voice chat and start fresh voice chat again and if the  problem continues, try /restart"
+                "**Asisten Sudah di Obrolan Suara**\n\nSistem telah mendeteksi bahwa asisten sudah ada di obrolan suara, masalah ini biasanya muncul saat Anda memainkan 2 kueri secara bersamaan.\n\nJika asisten tidak ada di obrolan suara, harap akhiri obrolan suara dan mulai obrolan suara baru lagi dan jika masalah berlanjut, coba /restart"
             )
         except TelegramServerError:
             raise AssistantErr(
-                "**Telegram Server Error**\n\nTelegram is having some internal server problems, Please try playing again.\n\n If this problem keeps coming everytime, please end your voice chat and start fresh voice chat again."
+                "**Telegram Server Error**\n\nTelegram mengalami beberapa masalah server internal, Silakan coba putar lagi.\n\n Jika masalah ini terus muncul setiap saat, harap akhiri obrolan suara Anda dan mulai obrolan suara baru lagi."
             )
         await add_active_chat(chat_id)
         await mute_off(chat_id)
@@ -626,4 +623,4 @@ class Call(PyTgCalls):
                 autoend[chat_id] = {}
 
 
-AmangMusic = Call()
+Amang = Call()
