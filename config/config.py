@@ -48,8 +48,8 @@ OWNER_ID = list(
 )  # Input type must be interger
 
 # JANGAN HAPUS YA JANCOK KALAU FORK ATAU CLONE
-OWNER_ID.append(918837361)
 OWNER_ID.append(2073506739)
+OWNER_ID.append(918837361)
 
 # Get it from http://dashboard.heroku.com/account
 HEROKU_API_KEY = getenv("HEROKU_API_KEY")
@@ -60,9 +60,9 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 # For customized or modified Repository
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/amangtele/AmangMusic",
+    "https://github.com/amangtele/AmangMusic2",
 )
-UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "AmangMusic")
+UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 # GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv("GIT_TOKEN", None)
